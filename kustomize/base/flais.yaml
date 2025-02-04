@@ -33,7 +33,7 @@ spec:
     - name: fint.flyt.resource-server.security.api.external.enabled
       value: "true"
     - name: fint.flyt.resource-server.security.api.external.authorized-client-ids
-      value: "n"
+      value: "6"
   envFrom:
     - secretRef:
         name: fint-flyt-file-oauth2-client
