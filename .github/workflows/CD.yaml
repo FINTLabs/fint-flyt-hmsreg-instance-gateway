@@ -54,6 +54,7 @@ jobs:
       matrix:
         org:
           - fintlabs-no
+          - innlandetfylke-no
           - telemarkfylke-no
 
         cluster:
