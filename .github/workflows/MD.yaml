@@ -18,12 +18,21 @@ on:
         default: 'warning'
         type: choice
         options:
+          - afk-no
+          - agderfk-no
+          - bfk-no
+          - ffk-no
           - fintlabs-no
           - innlandetfylke-no
           - mrfylke-no
           - nfk-no
-          - vlfk-no
+          - ofk-no
+          - rogfk-no
+          - telemarkfylke-no
+          - tromsfylke-no
           - trondelagfylke-no
+          - vestfoldfylke-no
+          - vlfk-no
 
 env:
   REGISTRY: ghcr.io
@@ -39,7 +48,7 @@ jobs:
       packages: write
 
     steps:
-      - uses: actions/github-script@v6
+      - uses: actions/github-script@v7
         name: Get resource group name
         id: rg
         with:
@@ -48,7 +57,7 @@ jobs:
             return `rg-${a[0]}-${a[1]}`
           result-encoding: string
 
-      - uses: actions/github-script@v6
+      - uses: actions/github-script@v7
         name: Get environment
         id: environment
         with:
@@ -56,7 +65,7 @@ jobs:
             const a = '${{ inputs.cluster }}'.split('-')
             return `${a[1]}`
           result-encoding: string
-      - uses: actions/github-script@v6
+      - uses: actions/github-script@v7
         name: Get auth
         id: auth
         with:
@@ -84,7 +93,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          images: "${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}"
           tags: |
             type=sha,enable=true,priority=100,prefix=sha-,suffix=,format=short
 
