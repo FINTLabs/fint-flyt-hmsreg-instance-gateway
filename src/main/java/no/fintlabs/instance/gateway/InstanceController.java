@@ -25,7 +25,7 @@ public class InstanceController {
         this.caseInstanceProcessor = caseInstanceProcessor;
     }
 
-    @PostMapping("hmsreg_sak")
+    @PostMapping("sak")
     public Mono<ResponseEntity<?>> postIncomingInstanceWithCollectionElements(
             @RequestBody CaseInstance caseInstance,
             @AuthenticationPrincipal Mono<Authentication> authenticationMono

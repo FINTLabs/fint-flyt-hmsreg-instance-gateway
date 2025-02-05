@@ -114,14 +114,14 @@ public class CaseInstanceMappingService implements InstanceMapper<CaseInstance> 
             Function<File, Mono<UUID>> persistFile,
             Long sourceApplicationId,
             String sourceApplicationInstanceId,
-            List<Document> egrunnervervJournalpostDocuments
+            List<Document> attachmentDocuments
     ) {
-        return Flux.fromIterable(egrunnervervJournalpostDocuments)
-                .flatMap(egrunnervervJournalpostDocument -> mapAttachmentDocumentToInstanceObject(
+        return Flux.fromIterable(attachmentDocuments)
+                .flatMap(attachmentDocument -> mapAttachmentDocumentToInstanceObject(
                         persistFile,
                         sourceApplicationId,
                         sourceApplicationInstanceId,
-                        egrunnervervJournalpostDocument
+                        attachmentDocument
                 ))
                 .collectList();
     }
