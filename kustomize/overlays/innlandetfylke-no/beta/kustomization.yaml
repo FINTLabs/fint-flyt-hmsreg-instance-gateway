@@ -5,10 +5,9 @@ namespace: innlandetfylke-no
 resources:
   - ../../../base
 
-metadata:
-  labels:
-    app.kubernetes.io/instance: fint-flyt-hmsreg-instance-gateway_innlandetfylke_no
-    fintlabs.no/org-id: innlandetfylke.no
+commonLabels:
+  app.kubernetes.io/instance: fint-flyt-hmsreg-instance-gateway_innlandetfylke_no
+  fintlabs.no/org-id: innlandetfylke.no
 
 patches:
   - patch: |-
