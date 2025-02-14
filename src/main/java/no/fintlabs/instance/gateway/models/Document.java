@@ -1,6 +1,5 @@
 package no.fintlabs.instance.gateway.models;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -17,15 +16,11 @@ public class Document {
     @NotNull
     private String filename;
     @NotNull
-    @JsonProperty("ismaindocument")
     private Boolean isMainDocument;
     @NotNull
-    @JsonProperty("tittel")
     private String title;
     @NotNull
-    @JsonProperty("mediatype")
-    private MediaType mediaType;
+    private MediaType mediatype;
     @NotNull
-    @JsonProperty("documentbase64")
     private String documentBase64;
 }
