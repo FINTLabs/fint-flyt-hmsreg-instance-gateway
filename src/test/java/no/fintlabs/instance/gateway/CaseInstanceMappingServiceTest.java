@@ -41,7 +41,7 @@ class CaseInstanceMappingServiceTest {
         return CaseInstance
                 .builder()
                 .organizationName("testOrgNavn")
-                .instanceId("testInstanceId")
+                .instanceId("testInstansId")
                 .organizationNumber("testOrgNr")
                 .projectName("testProsjektNavn")
                 .mainSupplier("testHovedleverandør")
@@ -78,37 +78,37 @@ class CaseInstanceMappingServiceTest {
 
     private InstanceObject createExpectedInstanceObject() {
         HashMap<String, String> valuePerKey = new HashMap<>();
-        valuePerKey.put("organizationName", "testOrgNavn");
-        valuePerKey.put("instanceId", "testInstanceId");
-        valuePerKey.put("organizationNumber", "testOrgNr");
-        valuePerKey.put("projectName", "testProsjektNavn");
-        valuePerKey.put("mainSupplier", "testHovedleverandør");
-        valuePerKey.put("processed", "2024-09-04T08:39:43.0200000");
+        valuePerKey.put("organisasjonsNavn", "testOrgNavn");
+        valuePerKey.put("instansId", "testInstansId");
+        valuePerKey.put("organisasjonsNummer", "testOrgNr");
+        valuePerKey.put("prosjektNavn", "testProsjektNavn");
+        valuePerKey.put("hovedLeverandor", "testHovedleverandør");
+        valuePerKey.put("behandlet", "2024-09-04T08:39:43.0200000");
         valuePerKey.put("status", "testStatus");
-        valuePerKey.put("mainDocumentTitle", "testHoveddokumentTittel");
-        valuePerKey.put("mainDocumentFilename", "testHoveddokumentFilnavn.pdf");
-        valuePerKey.put("mainDocumentFile", "40b1417d-f4dd-4be6-ae59-e36490957565");
-        valuePerKey.put("mainDocumentMediaType", "application/pdf");
+        valuePerKey.put("hovedDokumentTittel", "testHoveddokumentTittel");
+        valuePerKey.put("hovedDokumentFilnavn", "testHoveddokumentFilnavn.pdf");
+        valuePerKey.put("hovedDokumentFil", "40b1417d-f4dd-4be6-ae59-e36490957565");
+        valuePerKey.put("hovedDokumentMediatype", "application/pdf");
 
         return InstanceObject
                 .builder()
                 .valuePerKey(valuePerKey)
                 .objectCollectionPerKey(
                         Map.of(
-                                "attachments", List.of(
+                                "vedlegg", List.of(
                                         InstanceObject.builder().valuePerKey(
                                                 Map.of(
-                                                        "title", "testVedlegg1Tittel",
-                                                        "filename", "testVedlegg1Filnavn.pdf",
-                                                        "file", "68bf4daf-a0af-4df5-a1ef-3a1409aef4dc",
+                                                        "tittel", "testVedlegg1Tittel",
+                                                        "filnavn", "testVedlegg1Filnavn.pdf",
+                                                        "fil", "68bf4daf-a0af-4df5-a1ef-3a1409aef4dc",
                                                         "mediatype", "application/pdf"
                                                 )
                                         ).build(),
                                         InstanceObject.builder().valuePerKey(
                                                 Map.of(
-                                                        "title", "testVedlegg2Tittel",
-                                                        "filename", "testVedlegg2Filnavn.docx",
-                                                        "file", "e4127b11-6c71-4570-b362-d4aae28b7193",
+                                                        "tittel", "testVedlegg2Tittel",
+                                                        "filnavn", "testVedlegg2Filnavn.docx",
+                                                        "fil", "e4127b11-6c71-4570-b362-d4aae28b7193",
                                                         "mediatype", "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
                                                 )
                                         ).build()
@@ -124,7 +124,7 @@ class CaseInstanceMappingServiceTest {
                         "UTF-8".equals(file.getEncoding()) &&
                         "application/pdf".equals(String.valueOf(file.getType())) &&
                         "6".equals(String.valueOf(file.getSourceApplicationId())) &&
-                        "testInstanceId".equals(file.getSourceApplicationInstanceId()) &&
+                        "testInstansId".equals(file.getSourceApplicationInstanceId()) &&
                         "SG92ZWRkb2t1bWVudA==".equals(file.getBase64Contents());
         doReturn(Mono.just(UUID.fromString("40b1417d-f4dd-4be6-ae59-e36490957565")))
                 .when(persistFile).apply(argThat(argumentMatcherHoveddokument));
@@ -134,7 +134,7 @@ class CaseInstanceMappingServiceTest {
                         "UTF-8".equals(file.getEncoding()) &&
                         "application/pdf".equals(String.valueOf(file.getType())) &&
                         "6".equals(String.valueOf(file.getSourceApplicationId())) &&
-                        "testInstanceId".equals(file.getSourceApplicationInstanceId()) &&
+                        "testInstansId".equals(file.getSourceApplicationInstanceId()) &&
                         "SG92ZWRkb2t1bWVudA==".equals(file.getBase64Contents());
         doReturn(Mono.just(UUID.fromString("68bf4daf-a0af-4df5-a1ef-3a1409aef4dc")))
                 .when(persistFile).apply(argThat(argumentMatcherVedlegg1));
@@ -144,7 +144,7 @@ class CaseInstanceMappingServiceTest {
                         "UTF-8".equals(file.getEncoding()) &&
                         "application/vnd.openxmlformats-officedocument.wordprocessingml.document".equals(String.valueOf(file.getType())) &&
                         "6".equals(String.valueOf(file.getSourceApplicationId())) &&
-                        "testInstanceId".equals(file.getSourceApplicationInstanceId()) &&
+                        "testInstansId".equals(file.getSourceApplicationInstanceId()) &&
                         "UEsFBgAAAAAAAAAAAAAAAAAAAAAAAA==".equals(file.getBase64Contents());
         doReturn(Mono.just(UUID.fromString("e4127b11-6c71-4570-b362-d4aae28b7193")))
                 .when(persistFile).apply(argThat(argumentMatcherVedlegg2));

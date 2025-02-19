@@ -63,7 +63,7 @@ public class CaseInstanceMappingService implements InstanceMapper<CaseInstance> 
                                     .valuePerKey(valuePerKey)
                                     .objectCollectionPerKey(
                                             Map.of(
-                                                    "attachments", mainDocumentValuePerKeyAndAttachmentsInstanceObjects.getT2()
+                                                    "vedlegg", mainDocumentValuePerKeyAndAttachmentsInstanceObjects.getT2()
                                             ))
                                     .build();
                         }
@@ -73,12 +73,12 @@ public class CaseInstanceMappingService implements InstanceMapper<CaseInstance> 
 
     private static HashMap<String, String> getStringStringHashMap(CaseInstance caseInstance) {
         HashMap<String, String> valuePerKey = new HashMap<>();
-        valuePerKey.put("organizationName", caseInstance.getOrganizationName());
-        valuePerKey.put("instanceId", caseInstance.getInstanceId());
-        valuePerKey.put("organizationNumber", caseInstance.getOrganizationNumber());
-        valuePerKey.put("projectName", caseInstance.getProjectName());
-        valuePerKey.put("mainSupplier", caseInstance.getMainSupplier());
-        valuePerKey.put("processed", caseInstance.getProcessed().format(DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSSSSS")));
+        valuePerKey.put("organisasjonsNavn", caseInstance.getOrganizationName());
+        valuePerKey.put("instansId", caseInstance.getInstanceId());
+        valuePerKey.put("organisasjonsNummer", caseInstance.getOrganizationNumber());
+        valuePerKey.put("prosjektNavn", caseInstance.getProjectName());
+        valuePerKey.put("hovedLeverandor", caseInstance.getMainSupplier());
+        valuePerKey.put("behandlet", caseInstance.getProcessed().format(DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSSSSS")));
         valuePerKey.put("status", caseInstance.getStatus());
         return valuePerKey;
     }
@@ -104,10 +104,10 @@ public class CaseInstanceMappingService implements InstanceMapper<CaseInstance> 
             UUID fileId
     ) {
         return Map.of(
-                "mainDocumentTitle", Optional.ofNullable(document.getTitle()).orElse(""),
-                "mainDocumentFilename", Optional.ofNullable(document.getFilename()).orElse(""),
-                "mainDocumentFile", fileId.toString(),
-                "mainDocumentMediaType", document.getMediatype().toString()
+                "hovedDokumentTittel", Optional.ofNullable(document.getTitle()).orElse(""),
+                "hovedDokumentFilnavn", Optional.ofNullable(document.getFilename()).orElse(""),
+                "hovedDokumentFil", fileId.toString(),
+                "hovedDokumentMediatype", document.getMediatype().toString()
         );
     }
 
@@ -152,9 +152,9 @@ public class CaseInstanceMappingService implements InstanceMapper<CaseInstance> 
         return InstanceObject
                 .builder()
                 .valuePerKey(Map.of(
-                        "title", Optional.ofNullable(attachmentDocument.getTitle()).orElse(""),
-                        "filename", Optional.ofNullable(attachmentDocument.getFilename()).orElse(""),
-                        "file", fileId.toString(),
+                        "tittel", Optional.ofNullable(attachmentDocument.getTitle()).orElse(""),
+                        "filnavn", Optional.ofNullable(attachmentDocument.getFilename()).orElse(""),
+                        "fil", fileId.toString(),
                         "mediatype", attachmentDocument.getMediatype().toString()
                 ))
                 .build();
