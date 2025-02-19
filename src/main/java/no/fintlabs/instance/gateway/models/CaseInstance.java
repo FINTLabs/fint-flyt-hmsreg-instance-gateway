@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.extern.jackson.Jacksonized;
+import no.fintlabs.instance.gateway.validation.ExactlyOneMainDocument;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -32,5 +33,6 @@ public class CaseInstance {
     @NotNull
     private final String status;
 
+    @ExactlyOneMainDocument
     private final List<@Valid @NotNull Document> documents;
 }
