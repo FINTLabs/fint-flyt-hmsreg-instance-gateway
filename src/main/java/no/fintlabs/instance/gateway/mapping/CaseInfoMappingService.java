@@ -56,25 +56,13 @@ public class CaseInfoMappingService {
     private CaseManager getCaseManager(SakResource caseResource) {
         try {
             ArkivressursResource archiveResourceResource = arkivressursResourceCache.get(
-                    getFirstLink(
-                            caseResource::getSaksansvarlig,
-                            caseResource,
-                            "Saksansvarlig"
-                    )
+                    getFirstLink(caseResource::getSaksansvarlig)
             );
             PersonalressursResource personalResourceResource = personalressursResourceCache.get(
-                    getFirstLink(
-                            archiveResourceResource::getPersonalressurs,
-                            archiveResourceResource,
-                            "Personalressurs"
-                    )
+                    getFirstLink(archiveResourceResource::getPersonalressurs)
             );
             PersonResource personResource = personResourceCache.get(
-                    getFirstLink(
-                            personalResourceResource::getPerson,
-                            personalResourceResource,
-                            "Person"
-                    )
+                    getFirstLink(personalResourceResource::getPerson)
             );
             return CaseManager
                     .builder()
@@ -93,11 +81,7 @@ public class CaseInfoMappingService {
     private AdministrativeUnit getAdministrativeUnit(SakResource caseResource) {
         try {
             AdministrativEnhetResource administrativeUnitResource = administrativEnhetResourceCache.get(
-                    getFirstLink(
-                            caseResource::getAdministrativEnhet,
-                            caseResource,
-                            "AdministrativEnhet"
-                    )
+                    getFirstLink(caseResource::getAdministrativEnhet)
             );
             return AdministrativeUnit
                     .builder()
@@ -112,11 +96,7 @@ public class CaseInfoMappingService {
     private CaseStatus getCaseStatus(SakResource caseResource) {
         try {
             SaksstatusResource caseStatusResource = saksstatusResourceCache.get(
-                    getFirstLink(
-                            caseResource::getSaksstatus,
-                            caseResource,
-                            "Saksstatus"
-                    )
+                    getFirstLink(caseResource::getSaksstatus)
             );
             return CaseStatus
                     .builder()

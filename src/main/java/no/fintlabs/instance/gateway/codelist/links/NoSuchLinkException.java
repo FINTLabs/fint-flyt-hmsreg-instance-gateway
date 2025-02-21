@@ -1,10 +1,8 @@
 package no.fintlabs.instance.gateway.codelist.links;
 
-import no.fint.model.resource.FintLinks;
-
 public class NoSuchLinkException extends RuntimeException {
 
-    public static NoSuchLinkException noLink(FintLinks resource, String linkedResourceName) {
+    public static NoSuchLinkException noLink() {
         return new NoSuchLinkException("No link for resource");
     }
 

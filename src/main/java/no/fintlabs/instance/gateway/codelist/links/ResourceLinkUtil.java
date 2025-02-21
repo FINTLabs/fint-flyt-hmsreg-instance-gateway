@@ -19,12 +19,12 @@ public class ResourceLinkUtil {
                 .collect(Collectors.toList());
     }
 
-    public static String getFirstLink(Supplier<List<Link>> linkProducer, FintLinks resource, String linkedResourceName) {
+    public static String getFirstLink(Supplier<List<Link>> linkProducer) {
         return Optional.ofNullable(linkProducer.get())
                 .map(Collection::stream)
                 .flatMap(Stream::findFirst)
                 .map(Link::getHref)
-                .orElseThrow(() -> NoSuchLinkException.noLink(resource, linkedResourceName));
+                .orElseThrow(NoSuchLinkException::noLink);
     }
 
 }
