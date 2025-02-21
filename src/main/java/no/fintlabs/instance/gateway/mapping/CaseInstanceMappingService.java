@@ -1,4 +1,4 @@
-package no.fintlabs.instance.gateway;
+package no.fintlabs.instance.gateway.mapping;
 
 import no.fintlabs.gateway.instance.InstanceMapper;
 import no.fintlabs.gateway.instance.model.File;
