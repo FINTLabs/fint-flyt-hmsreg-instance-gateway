@@ -17,9 +17,9 @@ public class CaseInstanceProcessorConfiguration {
             CaseInstanceMappingService caseInstanceMappingService
     ) {
         return instanceProcessorFactoryService.createInstanceProcessor(
-                "hmsreg_sak",
+                "sak",
                 caseInstance -> Optional.ofNullable(
-                        caseInstance.getInstanceid()
+                        caseInstance.getInstanceId()
                 ),
                 caseInstanceMappingService
         );
