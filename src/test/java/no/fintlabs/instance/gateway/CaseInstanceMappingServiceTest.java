@@ -3,13 +3,11 @@ package no.fintlabs.instance.gateway;
 import no.fintlabs.gateway.instance.model.File;
 import no.fintlabs.gateway.instance.model.instance.InstanceObject;
 import no.fintlabs.instance.gateway.models.CaseInstance;
-import no.fintlabs.instance.gateway.models.Document;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentMatcher;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.http.MediaType;
 import reactor.core.publisher.Mono;
 
 import java.time.LocalDateTime;
@@ -30,6 +28,8 @@ class CaseInstanceMappingServiceTest {
     @Mock
     CaseInstanceMappingService caseInstanceMappingService;
 
+    TestCaseUtils testCaseUtils = new TestCaseUtils();
+
     ArgumentMatcher<File> argumentMatcherHoveddokument;
     ArgumentMatcher<File> argumentMatcherVedlegg1;
     ArgumentMatcher<File> argumentMatcherVedlegg2;
@@ -47,32 +47,7 @@ class CaseInstanceMappingServiceTest {
                 .mainSupplier("testHovedleverandør")
                 .processed(LocalDateTime.parse("2024-09-04T08:39:43.0200000"))
                 .status("testStatus")
-                .documents(List.of(
-                        Document
-                                .builder()
-                                .filename("testHoveddokumentFilnavn.pdf")
-                                .isMainDocument(true)
-                                .title("testHoveddokumentTittel")
-                                .mediatype(MediaType.valueOf("application/pdf"))
-                                .documentBase64("SG92ZWRkb2t1bWVudA==")
-                                .build(),
-                        Document
-                                .builder()
-                                .filename("testVedlegg1Filnavn.pdf")
-                                .isMainDocument(false)
-                                .title("testVedlegg1Tittel")
-                                .mediatype(MediaType.valueOf("application/pdf"))
-                                .documentBase64("SG92ZWRkb2t1bWVudA==")
-                                .build(),
-                        Document
-                                .builder()
-                                .filename("testVedlegg2Filnavn.docx")
-                                .isMainDocument(false)
-                                .title("testVedlegg2Tittel")
-                                .mediatype(MediaType.valueOf("application/vnd.openxmlformats-officedocument.wordprocessingml.document"))
-                                .documentBase64("UEsFBgAAAAAAAAAAAAAAAAAAAAAAAA==")
-                                .build()
-                ))
+                .documents(testCaseUtils.createDocuments())
                 .build();
     }
 
