@@ -19,4 +19,4 @@ server:
   port: 8106
 logging:
   level:
-    no.fintlabs.InstanceController: DEBUG
+    no.fintlabs.instance.gateway.InstanceController: DEBUG
