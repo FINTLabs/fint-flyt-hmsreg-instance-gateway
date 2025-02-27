@@ -51,7 +51,7 @@ dependencies {
 
     implementation 'no.fintlabs:fint-flyt-cache:1.2.4'
 
-    implementation 'no.fintlabs:fint-flyt-instance-gateway:6.0.0'
+    implementation 'no.fintlabs:fint-flyt-instance-gateway:6.0.1-rc-1'
     implementation 'no.fintlabs:fint-flyt-resource-server:5.0.0'
 
     compileOnly 'org.projectlombok:lombok'
