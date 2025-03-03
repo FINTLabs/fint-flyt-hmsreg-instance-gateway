@@ -1,4 +1,4 @@
-package no.fintlabs.instance.gateway.mapping;
+package no.fintlabs.instance.gateway;
 
 import no.fintlabs.gateway.instance.kafka.ArchiveCaseIdRequestService;
 import no.fintlabs.instance.gateway.models.CaseStatus;

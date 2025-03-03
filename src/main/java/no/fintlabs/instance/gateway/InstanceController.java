@@ -1,7 +1,6 @@
 package no.fintlabs.instance.gateway;
 
 import no.fintlabs.gateway.instance.InstanceProcessor;
-import no.fintlabs.instance.gateway.mapping.CaseStatusService;
 import no.fintlabs.instance.gateway.models.CaseInstance;
 import no.fintlabs.instance.gateway.models.CaseStatus;
 import org.springframework.http.HttpStatus;
