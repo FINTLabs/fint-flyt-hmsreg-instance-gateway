@@ -2,6 +2,7 @@ package no.fintlabs.instance.gateway;
 
 import no.fintlabs.gateway.instance.InstanceProcessor;
 import no.fintlabs.gateway.instance.InstanceProcessorFactoryService;
+import no.fintlabs.instance.gateway.mapping.CaseInstanceMappingService;
 import no.fintlabs.instance.gateway.models.CaseInstance;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
