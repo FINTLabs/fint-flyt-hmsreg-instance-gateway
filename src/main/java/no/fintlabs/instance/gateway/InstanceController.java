@@ -29,7 +29,7 @@ public class InstanceController {
         this.caseStatusService = caseStatusService;
     }
 
-    @GetMapping("{sourceApplicationInstanceId}")
+    @GetMapping("{sourceApplicationInstanceId}/status")
     public Mono<ResponseEntity<CaseStatus>> getInstanceCaseInfo(
             @AuthenticationPrincipal Mono<Authentication> authenticationMono,
             @PathVariable String sourceApplicationInstanceId
