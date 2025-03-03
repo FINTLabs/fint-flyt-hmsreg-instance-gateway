@@ -1,10 +1,9 @@
 package no.fintlabs.instance.gateway;
 
-import no.fintlabs.gateway.instance.ArchiveCaseService;
 import no.fintlabs.gateway.instance.InstanceProcessor;
-import no.fintlabs.instance.gateway.mapping.CaseInfoMappingService;
+import no.fintlabs.instance.gateway.mapping.CaseStatusService;
 import no.fintlabs.instance.gateway.models.CaseInstance;
-import no.fintlabs.instance.gateway.models.caseinfo.CaseInfo;
+import no.fintlabs.instance.gateway.models.CaseStatus;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
@@ -20,36 +19,32 @@ import static no.fintlabs.resourceserver.UrlPaths.EXTERNAL_API;
 public class InstanceController {
 
     private final InstanceProcessor<CaseInstance> caseInstanceProcessor;
-    private final ArchiveCaseService archiveCaseService;
-    private final CaseInfoMappingService caseInfoMappingService;
+    private final CaseStatusService caseStatusService;
 
     public InstanceController(
             InstanceProcessor<CaseInstance> caseInstanceProcessor,
-            ArchiveCaseService archiveCaseService,
-            CaseInfoMappingService caseInfoMappingService
+            CaseStatusService caseStatusService
     ) {
         this.caseInstanceProcessor = caseInstanceProcessor;
-        this.archiveCaseService = archiveCaseService;
-        this.caseInfoMappingService = caseInfoMappingService;
+        this.caseStatusService = caseStatusService;
     }
 
     @GetMapping("{sourceApplicationInstanceId}")
-    public Mono<ResponseEntity<CaseInfo>> getInstanceCaseInfo(
+    public Mono<ResponseEntity<CaseStatus>> getInstanceCaseInfo(
             @AuthenticationPrincipal Mono<Authentication> authenticationMono,
             @PathVariable String sourceApplicationInstanceId
     ) {
-        return authenticationMono.map(authentication -> getCaseInfo(
+        return authenticationMono.map(authentication -> getCaseStatus(
                 authentication,
                 sourceApplicationInstanceId
         ));
     }
 
-    public ResponseEntity<CaseInfo> getCaseInfo(
+    public ResponseEntity<CaseStatus> getCaseStatus(
             Authentication authentication,
             String sourceApplicationInstanceId
     ) {
-        return archiveCaseService.getCase(authentication, sourceApplicationInstanceId)
-                .map(caseResource -> caseInfoMappingService.toCaseInfo(sourceApplicationInstanceId, caseResource))
+        return caseStatusService.getCaseStatus(authentication, sourceApplicationInstanceId)
                 .map(ResponseEntity::ok)
                 .orElseThrow(() -> new ResponseStatusException(
                         HttpStatus.NOT_FOUND,

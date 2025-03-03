@@ -1,4 +1,4 @@
-package no.fintlabs.instance.gateway.models.caseinfo;
+package no.fintlabs.instance.gateway.models;
 
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
@@ -9,6 +9,6 @@ import lombok.extern.jackson.Jacksonized;
 @Getter
 @EqualsAndHashCode
 @Jacksonized
-public class AdministrativeUnit {
-    private final String name;
+public class CaseStatus {
+    private final String archiveCaseId;
 }
