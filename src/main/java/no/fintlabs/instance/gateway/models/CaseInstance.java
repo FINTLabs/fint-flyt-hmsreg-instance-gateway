@@ -31,6 +31,8 @@ public class CaseInstance {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSSSSS")
     private LocalDateTime processed;
     @NotNull
+    private final String processedByEmail;
+    @NotNull
     private final String status;
 
     @ExactlyOneMainDocument
