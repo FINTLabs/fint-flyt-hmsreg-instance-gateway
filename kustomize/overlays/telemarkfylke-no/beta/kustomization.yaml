@@ -22,7 +22,7 @@ patches:
         value: "/beta"
       - op: replace
         path: "/spec/ingress/basePath"
-        value: "/beta/api/hmsreg/instances/sak"
+        value: "/beta/telemarkfylke-no/api/hmsreg/instances/sak"
     target:
       kind: Application
       name: fint-flyt-hmsreg-instance-gateway
