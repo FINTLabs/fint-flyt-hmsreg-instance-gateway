@@ -81,6 +81,7 @@ public class CaseInstanceMappingService implements InstanceMapper<CaseInstance> 
         valuePerKey.put("behandlet", caseInstance.getProcessed().format(DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSSSSS")));
         valuePerKey.put("behandletEpost", caseInstance.getProcessedByEmail());
         valuePerKey.put("status", caseInstance.getStatus());
+        valuePerKey.put("type", caseInstance.getType());
         return valuePerKey;
     }
 

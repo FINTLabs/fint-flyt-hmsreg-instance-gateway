@@ -34,6 +34,8 @@ public class CaseInstance {
     private final String processedByEmail;
     @NotNull
     private final String status;
+    @NotNull
+    private final String type;
 
     @ExactlyOneMainDocument
     private final List<@Valid @NotNull Document> documents;

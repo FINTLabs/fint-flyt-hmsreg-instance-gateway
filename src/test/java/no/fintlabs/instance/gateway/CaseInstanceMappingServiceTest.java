@@ -49,6 +49,7 @@ class CaseInstanceMappingServiceTest {
                 .processed(LocalDateTime.parse("2024-09-04T08:39:43.0200000"))
                 .processedByEmail("testEpost")
                 .status("testStatus")
+                .type("testType")
                 .documents(testCaseUtils.createDocuments())
                 .build();
     }
@@ -63,6 +64,7 @@ class CaseInstanceMappingServiceTest {
         valuePerKey.put("behandlet", "2024-09-04T08:39:43.0200000");
         valuePerKey.put("behandletEpost", "testEpost");
         valuePerKey.put("status", "testStatus");
+        valuePerKey.put("type", "testType");
         valuePerKey.put("hovedDokumentTittel", "testHoveddokumentTittel");
         valuePerKey.put("hovedDokumentFilnavn", "testHoveddokumentFilnavn.pdf");
         valuePerKey.put("hovedDokumentFil", "40b1417d-f4dd-4be6-ae59-e36490957565");
