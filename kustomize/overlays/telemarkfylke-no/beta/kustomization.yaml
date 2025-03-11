@@ -19,7 +19,7 @@ patches:
         value: "telemarkfylke.no"
       - op: add
         path: "/spec/url/basePath"
-        value: "/beta"
+        value: "/beta/telemarkfylke-no"
       - op: replace
         path: "/spec/ingress/basePath"
         value: "/beta/telemarkfylke-no/api/hmsreg/instances/sak"
