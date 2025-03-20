@@ -1,17 +1,15 @@
-package no.fintlabs.instance.gateway;
+package no.fintlabs.gateway.webinstance;
 
-import no.fintlabs.gateway.instance.InstanceProcessor;
-import no.fintlabs.instance.gateway.models.CaseInstance;
-import no.fintlabs.instance.gateway.models.CaseStatus;
+import no.fintlabs.gateway.webinstance.models.CaseInstance;
+import no.fintlabs.gateway.webinstance.models.CaseStatus;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
-import reactor.core.publisher.Mono;
 
-import static no.fintlabs.resourceserver.UrlPaths.EXTERNAL_API;
+import static no.fintlabs.webresourceserver.UrlPaths.EXTERNAL_API;
 
 @RestController
 @RequestMapping(EXTERNAL_API + "/hmsreg/instances/sak")
@@ -29,14 +27,11 @@ public class InstanceController {
     }
 
     @GetMapping("{sourceApplicationInstanceId}/status")
-    public Mono<ResponseEntity<CaseStatus>> getInstanceCaseInfo(
-            @AuthenticationPrincipal Mono<Authentication> authenticationMono,
-            @PathVariable String sourceApplicationInstanceId
+    public ResponseEntity<CaseStatus> getInstanceCaseInfo(
+            @AuthenticationPrincipal Authentication authentication,
+            @PathVariable("sourceApplicationInstanceId") String sourceApplicationInstanceId
     ) {
-        return authenticationMono.map(authentication -> getCaseStatus(
-                authentication,
-                sourceApplicationInstanceId
-        ));
+        return getCaseStatus(authentication, sourceApplicationInstanceId);
     }
 
     public ResponseEntity<CaseStatus> getCaseStatus(
@@ -52,16 +47,11 @@ public class InstanceController {
     }
 
     @PostMapping
-    public Mono<ResponseEntity<?>> postIncomingInstanceWithCollectionElements(
+    public ResponseEntity<?> postIncomingInstanceWithCollectionElements(
             @RequestBody CaseInstance caseInstance,
-            @AuthenticationPrincipal Mono<Authentication> authenticationMono
+            @AuthenticationPrincipal Authentication authentication
     ) {
-        return authenticationMono.flatMap(
-                authentication -> caseInstanceProcessor.processInstance(
-                        authentication,
-                        caseInstance
-                )
-        );
+        return caseInstanceProcessor.processInstance(authentication, caseInstance);
     }
 
 }

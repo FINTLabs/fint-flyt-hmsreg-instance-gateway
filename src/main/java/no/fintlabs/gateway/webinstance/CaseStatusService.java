@@ -1,8 +1,8 @@
-package no.fintlabs.instance.gateway;
+package no.fintlabs.gateway.webinstance;
 
-import no.fintlabs.gateway.instance.kafka.ArchiveCaseIdRequestService;
-import no.fintlabs.instance.gateway.models.CaseStatus;
-import no.fintlabs.resourceserver.security.client.sourceapplication.SourceApplicationAuthorizationService;
+import no.fintlabs.gateway.webinstance.kafka.ArchiveCaseIdRequestService;
+import no.fintlabs.gateway.webinstance.models.CaseStatus;
+import no.fintlabs.webresourceserver.security.client.sourceapplication.SourceApplicationAuthorizationService;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
@@ -26,7 +26,7 @@ public class CaseStatusService {
             Authentication authentication,
             String sourceApplicationInstanceId
     ) {
-        Long sourceApplicationId = sourceApplicationAuthorizationService.getSourceApplicationId(authentication);
+        long sourceApplicationId = sourceApplicationAuthorizationService.getSourceApplicationId(authentication);
         return archiveCaseIdRequestService.getArchiveCaseId(sourceApplicationId, sourceApplicationInstanceId)
                 .map(this::toCaseStatus);
     }

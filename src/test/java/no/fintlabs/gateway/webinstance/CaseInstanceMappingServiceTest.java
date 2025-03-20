@@ -1,15 +1,14 @@
-package no.fintlabs.instance.gateway;
+package no.fintlabs.gateway.webinstance;
 
-import no.fintlabs.gateway.instance.model.File;
-import no.fintlabs.gateway.instance.model.instance.InstanceObject;
-import no.fintlabs.instance.gateway.mapping.CaseInstanceMappingService;
-import no.fintlabs.instance.gateway.models.CaseInstance;
+import no.fintlabs.gateway.webinstance.model.File;
+import no.fintlabs.gateway.webinstance.model.instance.InstanceObject;
+import no.fintlabs.gateway.webinstance.mapping.CaseInstanceMappingService;
+import no.fintlabs.gateway.webinstance.models.CaseInstance;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentMatcher;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import reactor.core.publisher.Mono;
 
 import java.time.LocalDateTime;
 import java.util.HashMap;
@@ -36,7 +35,7 @@ class CaseInstanceMappingServiceTest {
     ArgumentMatcher<File> argumentMatcherVedlegg2;
 
     @Mock
-    Function<File, Mono<UUID>> persistFile;
+    Function<File, UUID> persistFile;
 
     private CaseInstance createIncomingCaseInstance() {
         return CaseInstance
@@ -70,32 +69,31 @@ class CaseInstanceMappingServiceTest {
         valuePerKey.put("hovedDokumentFil", "40b1417d-f4dd-4be6-ae59-e36490957565");
         valuePerKey.put("hovedDokumentMediatype", "application/pdf");
 
-        return InstanceObject
-                .builder()
-                .valuePerKey(valuePerKey)
-                .objectCollectionPerKey(
-                        Map.of(
-                                "vedlegg", List.of(
-                                        InstanceObject.builder().valuePerKey(
-                                                Map.of(
-                                                        "tittel", "testVedlegg1Tittel",
-                                                        "filnavn", "testVedlegg1Filnavn.pdf",
-                                                        "fil", "68bf4daf-a0af-4df5-a1ef-3a1409aef4dc",
-                                                        "mediatype", "application/pdf"
-                                                )
-                                        ).build(),
-                                        InstanceObject.builder().valuePerKey(
-                                                Map.of(
-                                                        "tittel", "testVedlegg2Tittel",
-                                                        "filnavn", "testVedlegg2Filnavn.docx",
-                                                        "fil", "e4127b11-6c71-4570-b362-d4aae28b7193",
-                                                        "mediatype", "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
-                                                )
-                                        ).build()
+        return new InstanceObject(
+                valuePerKey,
+                new HashMap<>(Map.of(
+                        "vedlegg", List.of(
+                                new InstanceObject(
+                                        Map.of(
+                                                "tittel", "testVedlegg1Tittel",
+                                                "filnavn", "testVedlegg1Filnavn.pdf",
+                                                "fil", "68bf4daf-a0af-4df5-a1ef-3a1409aef4dc",
+                                                "mediatype", "application/pdf"
+                                        ),
+                                        new HashMap<>()
+                                ),
+                                new InstanceObject(
+                                        Map.of(
+                                                "tittel", "testVedlegg2Tittel",
+                                                "filnavn", "testVedlegg2Filnavn.docx",
+                                                "fil", "e4127b11-6c71-4570-b362-d4aae28b7193",
+                                                "mediatype", "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                                        ),
+                                        new HashMap<>()
                                 )
                         )
-                )
-                .build();
+                ))
+        );
     }
 
     public void setUpFileFunctionMock() {
@@ -106,7 +104,7 @@ class CaseInstanceMappingServiceTest {
                         "6".equals(String.valueOf(file.getSourceApplicationId())) &&
                         "testInstansId".equals(file.getSourceApplicationInstanceId()) &&
                         "SG92ZWRkb2t1bWVudA==".equals(file.getBase64Contents());
-        doReturn(Mono.just(UUID.fromString("40b1417d-f4dd-4be6-ae59-e36490957565")))
+        doReturn(UUID.fromString("40b1417d-f4dd-4be6-ae59-e36490957565"))
                 .when(persistFile).apply(argThat(argumentMatcherHoveddokument));
 
         argumentMatcherVedlegg1 = file ->
@@ -116,7 +114,7 @@ class CaseInstanceMappingServiceTest {
                         "6".equals(String.valueOf(file.getSourceApplicationId())) &&
                         "testInstansId".equals(file.getSourceApplicationInstanceId()) &&
                         "SG92ZWRkb2t1bWVudA==".equals(file.getBase64Contents());
-        doReturn(Mono.just(UUID.fromString("68bf4daf-a0af-4df5-a1ef-3a1409aef4dc")))
+        doReturn(UUID.fromString("68bf4daf-a0af-4df5-a1ef-3a1409aef4dc"))
                 .when(persistFile).apply(argThat(argumentMatcherVedlegg1));
 
         argumentMatcherVedlegg2 = file ->
@@ -126,7 +124,7 @@ class CaseInstanceMappingServiceTest {
                         "6".equals(String.valueOf(file.getSourceApplicationId())) &&
                         "testInstansId".equals(file.getSourceApplicationInstanceId()) &&
                         "UEsFBgAAAAAAAAAAAAAAAAAAAAAAAA==".equals(file.getBase64Contents());
-        doReturn(Mono.just(UUID.fromString("e4127b11-6c71-4570-b362-d4aae28b7193")))
+        doReturn(UUID.fromString("e4127b11-6c71-4570-b362-d4aae28b7193"))
                 .when(persistFile).apply(argThat(argumentMatcherVedlegg2));
     }
 
@@ -143,7 +141,7 @@ class CaseInstanceMappingServiceTest {
                 sourceApplicationId,
                 incomingCase,
                 persistFile
-        ).block();
+        );
         assertThat(instanceObject).isEqualTo(expectedInstance);
 
         verify(persistFile).apply(argThat(argumentMatcherHoveddokument));

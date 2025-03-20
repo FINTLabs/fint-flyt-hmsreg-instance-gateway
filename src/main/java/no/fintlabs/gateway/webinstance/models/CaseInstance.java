@@ -1,14 +1,14 @@
-package no.fintlabs.instance.gateway.models;
+package no.fintlabs.gateway.webinstance.models;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.extern.jackson.Jacksonized;
-import no.fintlabs.instance.gateway.validation.ExactlyOneMainDocument;
+import no.fintlabs.gateway.webinstance.validation.ExactlyOneMainDocument;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 import java.util.List;
 

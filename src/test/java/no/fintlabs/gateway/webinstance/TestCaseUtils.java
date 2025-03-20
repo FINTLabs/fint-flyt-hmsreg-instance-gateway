@@ -1,6 +1,6 @@
-package no.fintlabs.instance.gateway;
+package no.fintlabs.gateway.webinstance;
 
-import no.fintlabs.instance.gateway.models.Document;
+import no.fintlabs.gateway.webinstance.models.Document;
 import org.springframework.http.MediaType;
 
 import java.util.List;

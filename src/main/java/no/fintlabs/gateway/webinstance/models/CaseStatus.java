@@ -1,4 +1,4 @@
-package no.fintlabs.instance.gateway.models;
+package no.fintlabs.gateway.webinstance.models;
 
 import lombok.Builder;
 import lombok.EqualsAndHashCode;

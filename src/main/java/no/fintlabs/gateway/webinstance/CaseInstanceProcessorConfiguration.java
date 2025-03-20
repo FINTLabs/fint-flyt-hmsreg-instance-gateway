@@ -1,9 +1,7 @@
-package no.fintlabs.instance.gateway;
+package no.fintlabs.gateway.webinstance;
 
-import no.fintlabs.gateway.instance.InstanceProcessor;
-import no.fintlabs.gateway.instance.InstanceProcessorFactoryService;
-import no.fintlabs.instance.gateway.mapping.CaseInstanceMappingService;
-import no.fintlabs.instance.gateway.models.CaseInstance;
+import no.fintlabs.gateway.webinstance.mapping.CaseInstanceMappingService;
+import no.fintlabs.gateway.webinstance.models.CaseInstance;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -19,9 +17,7 @@ public class CaseInstanceProcessorConfiguration {
     ) {
         return instanceProcessorFactoryService.createInstanceProcessor(
                 "sak",
-                caseInstance -> Optional.ofNullable(
-                        caseInstance.getInstanceId()
-                ),
+                (CaseInstance ci) -> Optional.of(ci.getInstanceId()),
                 caseInstanceMappingService
         );
     }

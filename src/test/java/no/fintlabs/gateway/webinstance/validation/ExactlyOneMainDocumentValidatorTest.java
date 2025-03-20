@@ -1,12 +1,12 @@
-package no.fintlabs.instance.gateway.validation;
+package no.fintlabs.gateway.webinstance.validation;
 
-import no.fintlabs.instance.gateway.TestCaseUtils;
-import no.fintlabs.instance.gateway.models.Document;
+import no.fintlabs.gateway.webinstance.TestCaseUtils;
+import no.fintlabs.gateway.webinstance.models.Document;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 
-import javax.validation.ConstraintValidatorContext;
+import jakarta.validation.ConstraintValidatorContext;
 import java.util.ArrayList;
 import java.util.List;
 

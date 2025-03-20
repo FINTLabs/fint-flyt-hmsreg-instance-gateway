@@ -1,10 +1,10 @@
-package no.fintlabs.instance.gateway.validation;
+package no.fintlabs.gateway.webinstance.validation;
 
-import no.fintlabs.instance.gateway.models.Document;
+import no.fintlabs.gateway.webinstance.models.Document;
 import org.hibernate.validator.constraintvalidation.HibernateConstraintValidatorContext;
 
-import javax.validation.ConstraintValidator;
-import javax.validation.ConstraintValidatorContext;
+import jakarta.validation.ConstraintValidator;
+import jakarta.validation.ConstraintValidatorContext;
 import java.util.Collection;
 
 public class ExactlyOneMainDocumentValidator implements ConstraintValidator<ExactlyOneMainDocument, Collection<Document>> {

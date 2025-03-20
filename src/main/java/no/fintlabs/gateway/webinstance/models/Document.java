@@ -1,12 +1,11 @@
-package no.fintlabs.instance.gateway.models;
+package no.fintlabs.gateway.webinstance.models;
 
+import jakarta.validation.constraints.NotNull;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.extern.jackson.Jacksonized;
 import org.springframework.http.MediaType;
-
-import javax.validation.constraints.NotNull;
 
 @Getter
 @Jacksonized
