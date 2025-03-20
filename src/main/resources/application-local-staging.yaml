@@ -2,12 +2,13 @@ fint:
   org-id: fintlabs.no
   flyt:
     file-service-url: http://localhost:8091
-    resource-server:
+    webresourceserver:
       security:
         api:
           external:
             enabled: true
-            authorized-client-ids: 6
+            authorized-client-ids:
+              - "6"
     instance-gateway:
       check-integration-exists: false
   kafka:

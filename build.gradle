@@ -9,14 +9,6 @@ plugins {
 group = 'no.fintlabs'
 version = '0.0.1-SNAPSHOT'
 
-configurations.configureEach {
-    resolutionStrategy.eachDependency { details ->
-        if (details.requested.group == 'org.jetbrains.kotlin') {
-            details.useVersion '2.1.10'
-        }
-    }
-}
-
 repositories {
     mavenCentral()
     maven {
@@ -25,16 +17,7 @@ repositories {
     mavenLocal()
 }
 
-dependencyManagement {
-    imports {
-        mavenBom "org.springframework.boot:spring-boot-dependencies:3.4.3"
-        mavenBom "org.jetbrains.kotlin:kotlin-bom:2.1.10"
-    }
-}
-
 dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:2.1.10"
-
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
     implementation 'org.springframework.boot:spring-boot-starter-web'
 
@@ -48,8 +31,8 @@ dependencies {
 
     implementation 'no.fintlabs:fint-kafka:4.0.1'
     implementation 'no.fintlabs:fint-flyt-kafka:3.1.1'
-    implementation 'no.fintlabs:fint-flyt-web-instance-gateway:0-SNAPSHOT'
-    implementation 'no.fintlabs:fint-flyt-web-resource-server:unspecified'
+    implementation 'no.fintlabs:fint-flyt-web-instance-gateway:0.0.1-rc-3'
+    implementation 'no.fintlabs:fint-flyt-web-resource-server:0.0.1-rc-10'
 
     compileOnly 'org.projectlombok:lombok'
     runtimeOnly 'io.micrometer:micrometer-registry-prometheus'
