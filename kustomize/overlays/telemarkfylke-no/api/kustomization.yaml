@@ -20,10 +20,10 @@ patches:
         value: "telemarkfylke.no"
       - op: add
         path: "/spec/url/basePath"
-        value: "/beta/telemarkfylke-no"
+        value: "/telemarkfylke-no"
       - op: replace
         path: "/spec/ingress/basePath"
-        value: "/beta/telemarkfylke-no/api/hmsreg/instances/sak"
+        value: "/telemarkfylke-no/api/hmsreg/instances/sak"
     target:
       kind: Application
       name: fint-flyt-hmsreg-instance-gateway
