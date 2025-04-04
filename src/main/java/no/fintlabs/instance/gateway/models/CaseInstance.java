@@ -36,6 +36,12 @@ public class CaseInstance {
     private final String status;
     @NotNull
     private final String type;
+    @NotNull
+    private final String template;
+    @NotNull
+    private final String deviationCode;
+    @NotNull
+    private final String deviationCodeFU;
 
     @ExactlyOneMainDocument
     private final List<@Valid @NotNull Document> documents;

@@ -82,6 +82,9 @@ public class CaseInstanceMappingService implements InstanceMapper<CaseInstance> 
         valuePerKey.put("behandletEpost", caseInstance.getProcessedByEmail());
         valuePerKey.put("status", caseInstance.getStatus());
         valuePerKey.put("type", caseInstance.getType());
+        valuePerKey.put("template", caseInstance.getTemplate());
+        valuePerKey.put("deviationCode", caseInstance.getDeviationCode());
+        valuePerKey.put("deviationCodeFU", caseInstance.getDeviationCodeFU());
         return valuePerKey;
     }
 

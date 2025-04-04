@@ -50,6 +50,9 @@ class CaseInstanceMappingServiceTest {
                 .processedByEmail("testEpost")
                 .status("testStatus")
                 .type("testType")
+                .template("testTemplate")
+                .deviationCode("testDeviationCode")
+                .deviationCodeFU("testDeviationCodeFU")
                 .documents(testCaseUtils.createDocuments())
                 .build();
     }
@@ -65,6 +68,9 @@ class CaseInstanceMappingServiceTest {
         valuePerKey.put("behandletEpost", "testEpost");
         valuePerKey.put("status", "testStatus");
         valuePerKey.put("type", "testType");
+        valuePerKey.put("template", "testTemplate");
+        valuePerKey.put("deviationCode", "testDeviationCode");
+        valuePerKey.put("deviationCodeFU", "testDeviationCodeFU");
         valuePerKey.put("hovedDokumentTittel", "testHoveddokumentTittel");
         valuePerKey.put("hovedDokumentFilnavn", "testHoveddokumentFilnavn.pdf");
         valuePerKey.put("hovedDokumentFil", "40b1417d-f4dd-4be6-ae59-e36490957565");
