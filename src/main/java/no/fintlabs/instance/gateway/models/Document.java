@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.extern.jackson.Jacksonized;
 import org.springframework.http.MediaType;
 
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 @Getter
@@ -21,6 +22,6 @@ public class Document {
     private String title;
     @NotNull
     private MediaType mediatype;
-    @NotNull
+    @NotEmpty
     private String documentBase64;
 }
