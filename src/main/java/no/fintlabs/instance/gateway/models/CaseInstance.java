@@ -42,6 +42,8 @@ public class CaseInstance {
     private final String deviationCode;
     @NotNull
     private final String deviationCodeFU;
+    @NotNull
+    private final String leveranseId;
 
     @ExactlyOneMainDocument
     private final List<@Valid @NotNull Document> documents;
