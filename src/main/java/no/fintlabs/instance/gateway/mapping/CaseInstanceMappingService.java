@@ -86,6 +86,7 @@ public class CaseInstanceMappingService implements InstanceMapper<CaseInstance> 
         valuePerKey.put("deviationCode", caseInstance.getDeviationCode());
         valuePerKey.put("deviationCodeFU", caseInstance.getDeviationCodeFU());
         valuePerKey.put("leveranseId", caseInstance.getLeveranseId());
+        valuePerKey.put("avdeling", caseInstance.getAvdeling());
         return valuePerKey;
     }
 
