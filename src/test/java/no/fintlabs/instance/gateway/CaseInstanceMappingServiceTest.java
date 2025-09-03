@@ -53,8 +53,8 @@ class CaseInstanceMappingServiceTest {
                 .template("testTemplate")
                 .deviationCode("testDeviationCode")
                 .deviationCodeFU("testDeviationCodeFU")
-                .leveranseId("testLeveranseId")
-                .avdeling("testAvdeling")
+                .supplierId("testLeveranseId")
+                .department("testAvdeling")
                 .documents(testCaseUtils.createDocuments())
                 .build();
     }

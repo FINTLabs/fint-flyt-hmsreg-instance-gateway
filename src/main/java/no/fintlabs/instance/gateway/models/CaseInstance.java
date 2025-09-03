@@ -43,9 +43,9 @@ public class CaseInstance {
     @NotNull
     private final String deviationCodeFU;
     @NotNull
-    private final String leveranseId;
+    private final String supplierId;
     @NotNull
-    private final String avdeling;
+    private final String department;
 
     @ExactlyOneMainDocument
     private final List<@Valid @NotNull Document> documents;
