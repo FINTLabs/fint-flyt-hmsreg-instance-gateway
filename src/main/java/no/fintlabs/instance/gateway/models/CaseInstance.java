@@ -43,7 +43,7 @@ public class CaseInstance {
     @NotNull
     private final String deviationCodeFU;
     @NotNull
-    private final String caseId;
+    private final String projectId;
     @NotNull
     private final String department;
 
