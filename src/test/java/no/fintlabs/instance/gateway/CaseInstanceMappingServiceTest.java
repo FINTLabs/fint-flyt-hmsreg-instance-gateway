@@ -53,7 +53,7 @@ class CaseInstanceMappingServiceTest {
                 .template("testTemplate")
                 .deviationCode("testDeviationCode")
                 .deviationCodeFU("testDeviationCodeFU")
-                .supplierId("testLeveranseId")
+                .caseId("saksId")
                 .department("testAvdeling")
                 .documents(testCaseUtils.createDocuments())
                 .build();
@@ -73,7 +73,7 @@ class CaseInstanceMappingServiceTest {
         valuePerKey.put("template", "testTemplate");
         valuePerKey.put("deviationCode", "testDeviationCode");
         valuePerKey.put("deviationCodeFU", "testDeviationCodeFU");
-        valuePerKey.put("leveranseId", "testLeveranseId");
+        valuePerKey.put("saksId", "saksId");
         valuePerKey.put("avdeling", "testAvdeling");
         valuePerKey.put("hovedDokumentTittel", "testHoveddokumentTittel");
         valuePerKey.put("hovedDokumentFilnavn", "testHoveddokumentFilnavn.pdf");
