@@ -113,7 +113,7 @@ public class CaseInstanceMappingService implements InstanceMapper<CaseInstance> 
         return Map.of(
                 "hovedDokumentTittel", Optional.ofNullable(document.getTitle()).orElse(""),
                 "hovedDokumentFilnavn", Optional.ofNullable(document.getFilename()).orElse(""),
-                "hovedDokumentDato", Optional.ofNullable(document.getDocumentDatetime()).orElse(""),
+                "hovedDokumentdato", Optional.ofNullable(document.getDocumentDatetime()).orElse(""),
                 "hovedDokumentFil", fileId.toString(),
                 "hovedDokumentMediatype", document.getMediatype().toString()
         );

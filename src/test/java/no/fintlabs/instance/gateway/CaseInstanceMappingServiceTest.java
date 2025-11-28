@@ -77,7 +77,7 @@ class CaseInstanceMappingServiceTest {
         valuePerKey.put("avdeling", "testAvdeling");
         valuePerKey.put("hovedDokumentTittel", "testHoveddokumentTittel");
         valuePerKey.put("hovedDokumentFilnavn", "testHoveddokumentFilnavn.pdf");
-        valuePerKey.put("hovedDokumentDato", "testHoveddokumentDato");
+        valuePerKey.put("hovedDokumentdato", "testHoveddokumentDato");
         valuePerKey.put("hovedDokumentFil", "40b1417d-f4dd-4be6-ae59-e36490957565");
         valuePerKey.put("hovedDokumentMediatype", "application/pdf");
 
