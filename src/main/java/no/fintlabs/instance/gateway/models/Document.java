@@ -21,6 +21,8 @@ public class Document {
     @NotNull
     private String title;
     @NotNull
+    private String documentDatetime;
+    @NotNull
     private MediaType mediatype;
     @NotEmpty
     private String documentBase64;

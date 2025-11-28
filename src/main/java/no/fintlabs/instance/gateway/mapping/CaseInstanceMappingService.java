@@ -113,6 +113,7 @@ public class CaseInstanceMappingService implements InstanceMapper<CaseInstance> 
         return Map.of(
                 "hovedDokumentTittel", Optional.ofNullable(document.getTitle()).orElse(""),
                 "hovedDokumentFilnavn", Optional.ofNullable(document.getFilename()).orElse(""),
+                "hovedDokumentDato", Optional.ofNullable(document.getDocumentDatetime()).orElse(""),
                 "hovedDokumentFil", fileId.toString(),
                 "hovedDokumentMediatype", document.getMediatype().toString()
         );
@@ -161,6 +162,7 @@ public class CaseInstanceMappingService implements InstanceMapper<CaseInstance> 
                 .valuePerKey(Map.of(
                         "tittel", Optional.ofNullable(attachmentDocument.getTitle()).orElse(""),
                         "filnavn", Optional.ofNullable(attachmentDocument.getFilename()).orElse(""),
+                        "fildato", Optional.ofNullable(attachmentDocument.getDocumentDatetime()).orElse(""),
                         "fil", fileId.toString(),
                         "mediatype", attachmentDocument.getMediatype().toString()
                 ))
