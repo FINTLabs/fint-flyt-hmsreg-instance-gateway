@@ -21,6 +21,7 @@ public class TestCaseUtils {
                 .filename("testHoveddokumentFilnavn.pdf")
                 .isMainDocument(true)
                 .title("testHoveddokumentTittel")
+                .documentDatetime("testHoveddokumentDato")
                 .mediatype(MediaType.valueOf("application/pdf"))
                 .documentBase64("SG92ZWRkb2t1bWVudA==")
                 .build();
@@ -32,6 +33,7 @@ public class TestCaseUtils {
                 .filename("testVedlegg1Filnavn.pdf")
                 .isMainDocument(false)
                 .title("testVedlegg1Tittel")
+                .documentDatetime("testVedlegg1Dato")
                 .mediatype(MediaType.valueOf("application/pdf"))
                 .documentBase64("SG92ZWRkb2t1bWVudA==")
                 .build();
@@ -43,6 +45,7 @@ public class TestCaseUtils {
                 .filename("testVedlegg2Filnavn.docx")
                 .isMainDocument(false)
                 .title("testVedlegg2Tittel")
+                .documentDatetime("testVedlegg2Dato")
                 .mediatype(MediaType.valueOf("application/vnd.openxmlformats-officedocument.wordprocessingml.document"))
                 .documentBase64("UEsFBgAAAAAAAAAAAAAAAAAAAAAAAA==")
                 .build();

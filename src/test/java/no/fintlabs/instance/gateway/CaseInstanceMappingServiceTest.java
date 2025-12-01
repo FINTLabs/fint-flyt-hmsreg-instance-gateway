@@ -77,6 +77,7 @@ class CaseInstanceMappingServiceTest {
         valuePerKey.put("avdeling", "testAvdeling");
         valuePerKey.put("hovedDokumentTittel", "testHoveddokumentTittel");
         valuePerKey.put("hovedDokumentFilnavn", "testHoveddokumentFilnavn.pdf");
+        valuePerKey.put("hovedDokumentdato", "testHoveddokumentDato");
         valuePerKey.put("hovedDokumentFil", "40b1417d-f4dd-4be6-ae59-e36490957565");
         valuePerKey.put("hovedDokumentMediatype", "application/pdf");
 
@@ -90,6 +91,7 @@ class CaseInstanceMappingServiceTest {
                                                 Map.of(
                                                         "tittel", "testVedlegg1Tittel",
                                                         "filnavn", "testVedlegg1Filnavn.pdf",
+                                                        "fildato", "testVedlegg1Dato",
                                                         "fil", "68bf4daf-a0af-4df5-a1ef-3a1409aef4dc",
                                                         "mediatype", "application/pdf"
                                                 )
@@ -98,6 +100,7 @@ class CaseInstanceMappingServiceTest {
                                                 Map.of(
                                                         "tittel", "testVedlegg2Tittel",
                                                         "filnavn", "testVedlegg2Filnavn.docx",
+                                                        "fildato", "testVedlegg2Dato",
                                                         "fil", "e4127b11-6c71-4570-b362-d4aae28b7193",
                                                         "mediatype", "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
                                                 )
